@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: My overview block searching
 
   Background:
@@ -58,6 +58,6 @@ Feature: My overview block searching
     And I should see "Course 01" in the "Course overview" "block"
     And I should not see "Course 13" in the "Course overview" "block"
     And I click on "[data-control='next']" "css_element" in the "Course overview" "block"
-    And I wait until ".block_myoverview [data-control='next']" "css_element" exists
+    And I wait until ".block_myoverview_up [data-control='next']" "css_element" exists
     Then I should see "Course 13" in the "Course overview" "block"
     And I should not see "Course 01" in the "Course overview" "block"

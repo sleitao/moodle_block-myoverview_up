@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: The my overview block allows users to hide their courses
   In order to enable the my overview block in a course
   As a student
@@ -106,7 +106,7 @@ Feature: The my overview block allows users to hide their courses
   Scenario: Test a course is never hidden with "All (including removed from view)" courses
     Given the following config values are set as admin:
       | config                            | value | plugin           |
-      | displaygroupingallincludinghidden | 1     | block_myoverview |
+      | displaygroupingallincludinghidden | 1     | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     # We have to click on the data attribute instead of the button element text as we might risk to click on the false positive "All (except hidden)" element instead

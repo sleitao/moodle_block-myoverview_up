@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: My overview block pagination
 
   Background:
@@ -37,9 +37,9 @@ Feature: My overview block pagination
     When I am on the "My courses" page logged in as "student1"
     Then I should see "No courses" in the "Course overview" "block"
     And I should not see "Show" in the "Course overview" "block"
-    And ".block_myoverview .dropdown-menu.show" "css_element" should not be visible
-    And ".block_myoverview [data-control='next']" "css_element" should not be visible
-    And ".block_myoverview [data-control='previous']" "css_element" should not be visible
+    And ".block_myoverview_up .dropdown-menu.show" "css_element" should not be visible
+    And ".block_myoverview_up [data-control='next']" "css_element" should not be visible
+    And ".block_myoverview_up [data-control='previous']" "css_element" should not be visible
     And I log out
 
   Scenario: The pagination controls should be hidden if I am enrolled in 12 courses or less
@@ -59,9 +59,9 @@ Feature: My overview block pagination
       | student1 | C12 | student |
     When I am on the "My courses" page logged in as "student1"
     Then I should not see "Show" in the "Course overview" "block"
-    And ".block_myoverview .dropdown-menu.show" "css_element" should not be visible
-    And ".block_myoverview [data-control='next']" "css_element" should not be visible
-    And ".block_myoverview [data-control='previous']" "css_element" should not be visible
+    And ".block_myoverview_up .dropdown-menu.show" "css_element" should not be visible
+    And ".block_myoverview_up [data-control='next']" "css_element" should not be visible
+    And ".block_myoverview_up [data-control='previous']" "css_element" should not be visible
     And I log out
 
   Scenario: The default pagination should be 12 courses
@@ -81,7 +81,7 @@ Feature: My overview block pagination
       | student1 | C12 | student |
       | student1 | C13 | student |
     When I am on the "My courses" page logged in as "student1"
-    Then I should see "12" in the ".block_myoverview [data-action='limit-toggle']" "css_element"
+    Then I should see "12" in the ".block_myoverview_up [data-action='limit-toggle']" "css_element"
     And I log out
 
   Scenario: I should only see pagination limit options less than total number of enrolled courses
@@ -104,9 +104,9 @@ Feature: My overview block pagination
     When I click on "[data-action='limit-toggle']" "css_element" in the "Course overview" "block"
     Then I should see "All" in the ".dropdown-menu.show" "css_element"
     And I should see "12" in the ".dropdown-menu.show" "css_element"
-    And ".block_myoverview [data-control='next']" "css_element" should be visible
-    And ".block_myoverview [data-control='previous']" "css_element" should be visible
-    But I should not see "24" in the ".block_myoverview .dropdown-menu.show" "css_element"
+    And ".block_myoverview_up [data-control='next']" "css_element" should be visible
+    And ".block_myoverview_up [data-control='previous']" "css_element" should be visible
+    But I should not see "24" in the ".block_myoverview_up .dropdown-menu.show" "css_element"
     And I log out
 
   Scenario: Previous page button should be disabled when on the first page of courses
@@ -126,7 +126,7 @@ Feature: My overview block pagination
       | student1 | C12 | student |
       | student1 | C13 | student |
     When I am on the "My courses" page logged in as "student1"
-    Then the "class" attribute of ".block_myoverview [data-control='previous']" "css_element" should contain "disabled"
+    Then the "class" attribute of ".block_myoverview_up [data-control='previous']" "css_element" should contain "disabled"
     And I log out
 
   Scenario: Next page button should be disabled when on the last page of courses
@@ -147,7 +147,7 @@ Feature: My overview block pagination
       | student1 | C13 | student |
     When I am on the "My courses" page logged in as "student1"
     And I click on "[data-control='next']" "css_element" in the "Course overview" "block"
-    Then the "class" attribute of ".block_myoverview [data-control='next']" "css_element" should contain "disabled"
+    Then the "class" attribute of ".block_myoverview_up [data-control='next']" "css_element" should contain "disabled"
     And I log out
 
   Scenario: Next and previous page buttons should both be enabled when not on last or first page of courses
@@ -179,10 +179,10 @@ Feature: My overview block pagination
       | student1 | C24 | student |
       | student1 | C25 | student |
     When I am on the "My courses" page logged in as "student1"
-    And I wait until ".block_myoverview [data-control='next']" "css_element" exists
+    And I wait until ".block_myoverview_up [data-control='next']" "css_element" exists
     And I click on "[data-control='next']" "css_element" in the "Course overview" "block"
-    Then the "class" attribute of ".block_myoverview [data-control='next']" "css_element" should not contain "disabled"
-    And the "class" attribute of ".block_myoverview [data-control='previous']" "css_element" should not contain "disabled"
+    Then the "class" attribute of ".block_myoverview_up [data-control='next']" "css_element" should not contain "disabled"
+    And the "class" attribute of ".block_myoverview_up [data-control='previous']" "css_element" should not contain "disabled"
     And I should see "Course 13" in the "Course overview" "block"
     And I should see "Course 24" in the "Course overview" "block"
     But I should not see "Course 12" in the "Course overview" "block"

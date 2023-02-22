@@ -14,14 +14,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Javascript to initialise the myoverview block.
+ * Javascript to initialise the myoverview_up block.
  *
  * @copyright  2018 Bas Brands <bas@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-import * as View from 'block_myoverview/view';
-import * as ViewNav from 'block_myoverview/view_nav';
+import * as View from 'block_myoverview_up/view';
+import * as ViewNav from 'block_myoverview_up/view_nav';
 
 /**
  * Initialise all of the modules for the overview block.

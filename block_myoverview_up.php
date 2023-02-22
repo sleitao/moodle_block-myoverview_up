@@ -17,7 +17,7 @@
 /**
  * Contains the class for the My overview block.
  *
- * @package    block_myoverview
+ * @package    block_myoverview_up
  * @copyright  Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,17 +27,17 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * My overview block class.
  *
- * @package    block_myoverview
+ * @package    block_myoverview_up
  * @copyright  Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_myoverview extends block_base {
+class block_myoverview_up extends block_base {
 
     /**
      * Init.
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_myoverview');
+        $this->title = get_string('pluginname', 'block_myoverview_up');
     }
 
     /**
@@ -46,23 +46,57 @@ class block_myoverview extends block_base {
      * @return stdClass contents of block
      */
     public function get_content() {
+        global $CFG, $USER;
         if (isset($this->content)) {
             return $this->content;
         }
-        $group = get_user_preferences('block_myoverview_user_grouping_preference');
-        $sort = get_user_preferences('block_myoverview_user_sort_preference');
-        $view = get_user_preferences('block_myoverview_user_view_preference');
-        $paging = get_user_preferences('block_myoverview_user_paging_preference');
-        $customfieldvalue = get_user_preferences('block_myoverview_user_grouping_customfieldvalue_preference');
+        $group = get_user_preferences('block_myoverview_up_user_grouping_preference');
+        $sort = get_user_preferences('block_myoverview_up_user_sort_preference');
+        $view = get_user_preferences('block_myoverview_up_user_view_preference');
+        $paging = get_user_preferences('block_myoverview_up_user_paging_preference');
+        $customfieldvalue = get_user_preferences('block_myoverview_up_user_grouping_customfieldvalue_preference');
 
-        $renderable = new \block_myoverview\output\main($group, $sort, $view, $paging, $customfieldvalue);
-        $renderer = $this->page->get_renderer('block_myoverview');
-
-        $this->content = new stdClass();
-        $this->content->text = $renderer->render($renderable);
         $this->content->footer = '';
+        $this->content = new stdClass();
 
-        return $this->content;
+        $courses = enrol_get_all_users_courses($USER->id);  
+        $this->content->text = '<div class="courses-container">';
+
+        $renderable = new \block_myoverview_up\output\main($group, $sort, $view, $paging, $customfieldvalue);
+        $renderer = $this->page->get_renderer('block_myoverview_up');
+
+        
+        $this->content->text = $renderer->render($renderable);
+        
+        $hidden_courses= array();
+        
+    foreach ($courses as $course) {
+        $context = context_course::instance($course->id);
+        
+        // Check if the user does not have update capability for the course
+        if (!has_capability('moodle/course:update', $context)) {
+            
+            // Check if the course is hidden but the user (student) is enrolled
+            if ($course->visible == 0 && is_enrolled($context, $USER, '', true)) {
+                // Add the course to the hidden courses array
+                $hidden_courses[] = $course;
+            }
+        }  
+    }
+    
+    // Display the hiddden courses if any were found
+    if (!empty($hidden_courses)) {
+        $subtitle = get_string('hidden_courses' , 'block_myoverview_up');
+        $this->content->text .= "<strong>$subtitle:</strong><br>";
+        
+        // Loop through the hidden courses and display them
+        foreach ($hidden_courses as $course) {
+            $context = context_course::instance($course->id);
+            $this->content->text .= html_writer::tag('a', $course->fullname, array('href' => $CFG->wwwroot . '/course/view.php?id=' . $course->id, 'class' => 'grayout')) . '<br>';
+        }
+    }
+
+
     }
 
     /**
@@ -91,17 +125,17 @@ class block_myoverview extends block_base {
      */
     public function get_config_for_external() {
         // Return all settings for all users since it is safe (no private keys, etc..).
-        $configs = get_config('block_myoverview');
+        $configs = get_config('block_myoverview_up');
 
         // Get the customfield values (if any).
         if ($configs->displaygroupingcustomfield) {
-            $group = get_user_preferences('block_myoverview_user_grouping_preference');
-            $sort = get_user_preferences('block_myoverview_user_sort_preference');
-            $view = get_user_preferences('block_myoverview_user_view_preference');
-            $paging = get_user_preferences('block_myoverview_user_paging_preference');
-            $customfieldvalue = get_user_preferences('block_myoverview_user_grouping_customfieldvalue_preference');
+            $group = get_user_preferences('block_myoverview_up_user_grouping_preference');
+            $sort = get_user_preferences('block_myoverview_up_user_sort_preference');
+            $view = get_user_preferences('block_myoverview_up_user_view_preference');
+            $paging = get_user_preferences('block_myoverview_up_user_paging_preference');
+            $customfieldvalue = get_user_preferences('block_myoverview_up_user_grouping_customfieldvalue_preference');
 
-            $renderable = new \block_myoverview\output\main($group, $sort, $view, $paging, $customfieldvalue);
+            $renderable = new \block_myoverview_up\output\main($group, $sort, $view, $paging, $customfieldvalue);
             $customfieldsexport = $renderable->get_customfield_values_for_export();
             if (!empty($customfieldsexport)) {
                 $configs->customfieldsexport = json_encode($customfieldsexport);

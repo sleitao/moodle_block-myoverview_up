@@ -17,11 +17,11 @@
 /**
  * Class containing data for my overview block.
  *
- * @package    block_myoverview
+ * @package    block_myoverview_up
  * @copyright  2017 Ryan Wyllie <ryan@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace block_myoverview\output;
+namespace block_myoverview_up\output;
 defined('MOODLE_INTERNAL') || die();
 
 use renderable;
@@ -29,7 +29,7 @@ use renderer_base;
 use templatable;
 use stdClass;
 
-require_once($CFG->dirroot . '/blocks/myoverview/lib.php');
+require_once($CFG->dirroot . '/blocks/myoverview_up/lib.php');
 
 /**
  * Class containing data for my overview block.
@@ -42,28 +42,28 @@ class main implements renderable, templatable {
     /**
      * Store the grouping preference.
      *
-     * @var string String matching the grouping constants defined in myoverview/lib.php
+     * @var string String matching the grouping constants defined in myoverview_up/lib.php
      */
     private $grouping;
 
     /**
      * Store the sort preference.
      *
-     * @var string String matching the sort constants defined in myoverview/lib.php
+     * @var string String matching the sort constants defined in myoverview_up/lib.php
      */
     private $sort;
 
     /**
      * Store the view preference.
      *
-     * @var string String matching the view/display constants defined in myoverview/lib.php
+     * @var string String matching the view/display constants defined in myoverview_up/lib.php
      */
     private $view;
 
     /**
      * Store the paging preference.
      *
-     * @var string String matching the paging constants defined in myoverview/lib.php
+     * @var string String matching the paging constants defined in myoverview_up/lib.php
      */
     private $paging;
 
@@ -75,9 +75,9 @@ class main implements renderable, templatable {
     private $displaycategories;
 
     /**
-     * Store the configuration values for the myoverview block.
+     * Store the configuration values for the myoverview_up block.
      *
-     * @var array Array of available layouts matching view/display constants defined in myoverview/lib.php
+     * @var array Array of available layouts matching view/display constants defined in myoverview_up/lib.php
      */
     private $layouts;
 
@@ -166,7 +166,7 @@ class main implements renderable, templatable {
     public function __construct($grouping, $sort, $view, $paging, $customfieldvalue = null) {
         global $CFG;
         // Get plugin config.
-        $config = get_config('block_myoverview');
+        $config = get_config('block_myoverview_up');
 
         // Build the course grouping option name to check if the given grouping is enabled afterwards.
         $groupingconfigname = 'displaygrouping'.$grouping;
@@ -189,32 +189,32 @@ class main implements renderable, templatable {
         if ($sort) {
             $this->sort = $sort;
         } else if ($CFG->courselistshortnames) {
-            $this->sort = BLOCK_MYOVERVIEW_SORTING_SHORTNAME;
+            $this->sort = BLOCK_MYOVERVIEW_UP_SORTING_SHORTNAME;
         } else {
-            $this->sort = BLOCK_MYOVERVIEW_SORTING_TITLE;
+            $this->sort = BLOCK_MYOVERVIEW_UP_SORTING_TITLE;
         }
         // In case sorting remembered is shortname and display extended course names not checked,
         // we should revert sorting to title.
-        if (!$CFG->courselistshortnames && $sort == BLOCK_MYOVERVIEW_SORTING_SHORTNAME) {
-            $this->sort = BLOCK_MYOVERVIEW_SORTING_TITLE;
+        if (!$CFG->courselistshortnames && $sort == BLOCK_MYOVERVIEW_UP_SORTING_SHORTNAME) {
+            $this->sort = BLOCK_MYOVERVIEW_UP_SORTING_TITLE;
         }
 
         // Check and remember the given view.
-        $this->view = $view ? $view : BLOCK_MYOVERVIEW_VIEW_CARD;
+        $this->view = $view ? $view : BLOCK_MYOVERVIEW_UP_VIEW_CARD;
 
         // Check and remember the given page size, `null` indicates no page size set
         // while a `0` indicates a paging size of `All`.
-        if (!is_null($paging) && $paging == BLOCK_MYOVERVIEW_PAGING_ALL) {
-            $this->paging = BLOCK_MYOVERVIEW_PAGING_ALL;
+        if (!is_null($paging) && $paging == BLOCK_MYOVERVIEW_UP_PAGING_ALL) {
+            $this->paging = BLOCK_MYOVERVIEW_UP_PAGING_ALL;
         } else {
-            $this->paging = $paging ? $paging : BLOCK_MYOVERVIEW_PAGING_12;
+            $this->paging = $paging ? $paging : BLOCK_MYOVERVIEW_UP_PAGING_12;
         }
 
         // Check and remember if the course categories should be shown or not.
         if (!$config->displaycategories) {
-            $this->displaycategories = BLOCK_MYOVERVIEW_DISPLAY_CATEGORIES_OFF;
+            $this->displaycategories = BLOCK_MYOVERVIEW_UP_DISPLAY_CATEGORIES_OFF;
         } else {
-            $this->displaycategories = BLOCK_MYOVERVIEW_DISPLAY_CATEGORIES_ON;
+            $this->displaycategories = BLOCK_MYOVERVIEW_UP_DISPLAY_CATEGORIES_ON;
         }
 
         // Get and remember the available layouts.
@@ -257,32 +257,32 @@ class main implements renderable, templatable {
      */
     private function get_fallback_grouping($config) {
         if ($config->displaygroupingall == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_ALL;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_ALL;
         }
         if ($config->displaygroupingallincludinghidden == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_ALLINCLUDINGHIDDEN;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_ALLINCLUDINGHIDDEN;
         }
         if ($config->displaygroupinginprogress == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_INPROGRESS;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_INPROGRESS;
         }
         if ($config->displaygroupingfuture == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_FUTURE;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_FUTURE;
         }
         if ($config->displaygroupingpast == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_PAST;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_PAST;
         }
         if ($config->displaygroupingfavourites == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_FAVOURITES;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_FAVOURITES;
         }
         if ($config->displaygroupinghidden == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_HIDDEN;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_HIDDEN;
         }
         if ($config->displaygroupingcustomfield == true) {
-            return BLOCK_MYOVERVIEW_GROUPING_CUSTOMFIELD;
+            return BLOCK_MYOVERVIEW_UP_GROUPING_CUSTOMFIELD;
         }
         // In this case, no grouping option is enabled and the grouping is not needed at all.
         // But it's better not to leave $this->grouping unset for any unexpected case.
-        return BLOCK_MYOVERVIEW_GROUPING_ALLINCLUDINGHIDDEN;
+        return BLOCK_MYOVERVIEW_UP_GROUPING_ALLINCLUDINGHIDDEN;
     }
 
     /**
@@ -294,10 +294,10 @@ class main implements renderable, templatable {
      */
     public function set_available_layouts() {
 
-        if ($config = get_config('block_myoverview', 'layouts')) {
+        if ($config = get_config('block_myoverview_up', 'layouts')) {
             $this->layouts = explode(',', $config);
         } else {
-            $this->layouts = array(BLOCK_MYOVERVIEW_VIEW_CARD);
+            $this->layouts = array(BLOCK_MYOVERVIEW_UP_VIEW_CARD);
         }
     }
 
@@ -332,9 +332,9 @@ class main implements renderable, templatable {
         $layout = new stdClass();
 
         $layout->id = $layoutname;
-        $layout->name = get_string($layoutname, 'block_myoverview');
+        $layout->name = get_string($layoutname, 'block_myoverview_up');
         $layout->active = $this->view == $layoutname ? true : false;
-        $layout->arialabel = get_string('aria:' . $layoutname, 'block_myoverview');
+        $layout->arialabel = get_string('aria:' . $layoutname, 'block_myoverview_up');
 
         return $layout;
     }
@@ -385,7 +385,7 @@ class main implements renderable, templatable {
             return []; // The field shouldn't have been selectable in the global settings, but just skip it now.
         }
         $values = $field->course_grouping_format_values($values);
-        $customfieldactive = ($this->grouping === BLOCK_MYOVERVIEW_GROUPING_CUSTOMFIELD);
+        $customfieldactive = ($this->grouping === BLOCK_MYOVERVIEW_UP_GROUPING_CUSTOMFIELD);
         $ret = [];
         foreach ($values as $value => $name) {
             $ret[] = (object)[
@@ -408,7 +408,7 @@ class main implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG, $USER;
 
-        $nocoursesurl = $output->image_url('courses', 'block_myoverview')->out();
+        $nocoursesurl = $output->image_url('courses', 'block_myoverview_up')->out();
 
         $newcourseurl = '';
         $coursecat = \core_course_category::user_top();
@@ -418,7 +418,7 @@ class main implements renderable, templatable {
 
         $customfieldvalues = $this->get_customfield_values_for_export();
         $selectedcustomfield = '';
-        if ($this->grouping == BLOCK_MYOVERVIEW_GROUPING_CUSTOMFIELD) {
+        if ($this->grouping == BLOCK_MYOVERVIEW_UP_GROUPING_CUSTOMFIELD) {
             foreach ($customfieldvalues as $field) {
                 if ($field->value == $this->customfieldvalue) {
                     $selectedcustomfield = $field->name;
@@ -428,8 +428,8 @@ class main implements renderable, templatable {
             // If the selected custom field value has not been found (possibly because the field has
             // been changed in the settings) find a suitable fallback.
             if (!$selectedcustomfield) {
-                $this->grouping = $this->get_fallback_grouping(get_config('block_myoverview'));
-                if ($this->grouping == BLOCK_MYOVERVIEW_GROUPING_CUSTOMFIELD) {
+                $this->grouping = $this->get_fallback_grouping(get_config('block_myoverview_up'));
+                if ($this->grouping == BLOCK_MYOVERVIEW_UP_GROUPING_CUSTOMFIELD) {
                     // If the fallback grouping is still customfield, then select the first field.
                     $firstfield = reset($customfieldvalues);
                     if ($firstfield) {
@@ -442,10 +442,10 @@ class main implements renderable, templatable {
         $preferences = $this->get_preferences_as_booleans();
         $availablelayouts = $this->get_formatted_available_layouts_for_export();
         $sort = '';
-        if ($this->sort == BLOCK_MYOVERVIEW_SORTING_SHORTNAME) {
+        if ($this->sort == BLOCK_MYOVERVIEW_UP_SORTING_SHORTNAME) {
             $sort = 'shortname';
         } else {
-            $sort = $this->sort == BLOCK_MYOVERVIEW_SORTING_TITLE ? 'fullname' : 'ul.timeaccess desc';
+            $sort = $this->sort == BLOCK_MYOVERVIEW_UP_SORTING_TITLE ? 'fullname' : 'ul.timeaccess desc';
         }
 
         $defaultvariables = [

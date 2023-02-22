@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace block_myoverview;
+namespace block_myoverview_up;
 
 /**
  * Online users testcase
  *
- * @package    block_myoverview
+ * @package    block_myoverview_up
  * @category   test
  * @copyright  2019 Juan Leyva <juan@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class myoverview_test extends \advanced_testcase {
+class myoverview_up_test extends \advanced_testcase {
 
     /**
      * Test getting block configuration
@@ -51,8 +51,8 @@ class myoverview_test extends \advanced_testcase {
         $this->getDataGenerator()->enrol_user($user->id, $course2->id, 'student');
 
         // Force a setting change to check the returned blocks settings.
-        set_config('displaygroupingcustomfield', 1, 'block_myoverview');
-        set_config('customfiltergrouping', $field->get('shortname'), 'block_myoverview');
+        set_config('displaygroupingcustomfield', 1, 'block_myoverview_up');
+        set_config('customfiltergrouping', $field->get('shortname'), 'block_myoverview_up');
 
         $this->setUser($user);
         $context = \context_user::instance($user->id);
@@ -78,8 +78,8 @@ class myoverview_test extends \advanced_testcase {
             $regioninstances = $PAGE->blocks->get_blocks_for_region($region);
 
             foreach ($regioninstances as $ri) {
-                // Look for myoverview block only.
-                if ($ri->instance->blockname == 'myoverview') {
+                // Look for myoverview_up block only.
+                if ($ri->instance->blockname == 'myoverview_up') {
                     $configs = $ri->get_config_for_external();
                     break 2;
                 }
@@ -102,7 +102,7 @@ class myoverview_test extends \advanced_testcase {
         $this->assertEquals(1, $configs->plugin->displaygroupingpast);
         $this->assertEquals(1, $configs->plugin->displaygroupingfavourites);
         $this->assertEquals('card,list,summary', $configs->plugin->layouts);
-        $this->assertEquals(get_config('block_myoverview', 'version'), $configs->plugin->version);
+        $this->assertEquals(get_config('block_myoverview_up', 'version'), $configs->plugin->version);
         // Test custom fields.
         $this->assertJson($configs->plugin->customfieldsexport);
         $fields = json_decode($configs->plugin->customfieldsexport);

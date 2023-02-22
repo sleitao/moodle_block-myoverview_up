@@ -21,22 +21,22 @@
  */
 
 import $ from 'jquery';
-import * as Repository from 'block_myoverview/repository';
+import * as Repository from 'block_myoverview_up/repository';
 import * as PagedContentFactory from 'core/paged_content_factory';
 import * as PubSub from 'core/pubsub';
 import * as CustomEvents from 'core/custom_interaction_events';
 import * as Notification from 'core/notification';
 import * as Templates from 'core/templates';
 import * as CourseEvents from 'core_course/events';
-import SELECTORS from 'block_myoverview/selectors';
+import SELECTORS from 'block_myoverview_up/selectors';
 import * as PagedContentEvents from 'core/paged_content_events';
 import * as Aria from 'core/aria';
 import {debounce} from 'core/utils';
 
 const TEMPLATES = {
-    COURSES_CARDS: 'block_myoverview/view-cards',
-    COURSES_LIST: 'block_myoverview/view-list',
-    COURSES_SUMMARY: 'block_myoverview/view-summary',
+    COURSES_CARDS: 'block_myoverview_up/view-cards',
+    COURSES_LIST: 'block_myoverview_up/view-list',
+    COURSES_SUMMARY: 'block_myoverview_up/view-summary',
     NOCOURSES: 'core_course/no-courses'
 };
 
@@ -85,7 +85,7 @@ const getFilterValues = root => {
 const DEFAULT_PAGED_CONTENT_CONFIG = {
     ignoreControlWhileLoading: true,
     controlPlacementBottom: true,
-    persistentLimitKey: 'block_myoverview_user_paging_preference'
+    persistentLimitKey: 'block_myoverview_up_user_paging_preference'
 };
 
 /**
@@ -346,7 +346,7 @@ const setCourseHiddenState = (courseId, status) => {
     return Repository.updateUserPreferences({
         preferences: [
             {
-                type: 'block_myoverview_hidden_course_' + courseId,
+                type: 'block_myoverview_up_hidden_course_' + courseId,
                 value: status
             }
         ]
@@ -723,9 +723,9 @@ const initializePagedContent = (root, promiseFunction, inputValue = null) => {
 };
 
 /**
- * Listen to, and handle events for the myoverview block.
+ * Listen to, and handle events for the myoverview_up block.
  *
- * @param {Object} root The myoverview block container element.
+ * @param {Object} root The myoverview_up block container element.
  * @param {HTMLElement} page The whole HTMLElement for our block.
  */
 const registerEventListeners = (root, page) => {
@@ -790,7 +790,7 @@ const registerEventListeners = (root, page) => {
  * Reset the search icon and trigger the init for the block.
  *
  * @param {HTMLElement} clearIcon Our closing icon to manipulate.
- * @param {Object} root The myoverview block container element.
+ * @param {Object} root The myoverview_up block container element.
  */
 export const clearSearch = (clearIcon, root) => {
     clearIcon.classList.add('d-none');
@@ -820,7 +820,7 @@ export const init = root => {
     if (!root.attr('data-init')) {
         const page = document.querySelector(SELECTORS.region.selectBlock);
         registerEventListeners(root, page);
-        namespace = "block_myoverview_" + root.attr('id') + "_" + Math.random();
+        namespace = "block_myoverview_up_" + root.attr('id') + "_" + Math.random();
         root.attr('data-init', true);
     }
 

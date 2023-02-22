@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file keeps track of upgrades to the myoverview block
+ * This file keeps track of upgrades to the myoverview_up block
  *
  * @since 3.8
- * @package block_myoverview
+ * @package block_myoverview_up
  * @copyright 2019 Jake Dallimore <jrhdallimore@gmail.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,18 +29,18 @@ require_once("{$CFG->dirroot}/my/lib.php");
 require_once("{$CFG->libdir}/db/upgradelib.php");
 
 /**
- * Upgrade code for the MyOverview block.
+ * Upgrade code for the myoverview_up block.
  *
  * @param int $oldversion
  */
-function xmldb_block_myoverview_upgrade($oldversion) {
+function xmldb_block_myoverview_up_upgrade($oldversion) {
     global $DB, $CFG, $OUTPUT;
 
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
     if ($oldversion < 2021052504) {
-        upgrade_block_delete_instances('myoverview', '__default', 'my-index');
+        upgrade_block_delete_instances('myoverview_up', '__default', 'my-index');
 
         // Add new instance to the /my/courses.php page.
         $subpagepattern = $DB->get_record('my_pages', [
@@ -49,7 +49,7 @@ function xmldb_block_myoverview_upgrade($oldversion) {
             'private' => MY_PAGE_PUBLIC,
         ], 'id', IGNORE_MULTIPLE)->id;
 
-        $blockname = 'myoverview';
+        $blockname = 'myoverview_up';
         $pagetypepattern = 'my-index';
 
         $blockparams = [
@@ -67,12 +67,12 @@ function xmldb_block_myoverview_upgrade($oldversion) {
             $page->blocks->add_block($blockname, 'content', 0, false, $pagetypepattern, $subpagepattern);
         }
 
-        upgrade_block_savepoint(true, 2021052504, 'myoverview', false);
+        upgrade_block_savepoint(true, 2021052504, 'myoverview_up', false);
     }
 
     if ($oldversion < 2022041901) {
-        upgrade_block_set_my_user_parent_context('myoverview', '__default', 'my-index');
-        upgrade_block_savepoint(true, 2022041901, 'myoverview', false);
+        upgrade_block_set_my_user_parent_context('myoverview_up', '__default', 'my-index');
+        upgrade_block_savepoint(true, 2022041901, 'myoverview_up', false);
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.

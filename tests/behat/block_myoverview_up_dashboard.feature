@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: The my overview block allows users to easily access their courses
   In order to enable the my overview block in a course
   As a student
@@ -69,7 +69,7 @@ Feature: The my overview block allows users to easily access their courses
   Scenario: View all (including removed from view) courses
     Given the following config values are set as admin:
       | config                            | value | plugin           |
-      | displaygroupingallincludinghidden | 1     | block_myoverview |
+      | displaygroupingallincludinghidden | 1     | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     # We have to click on the data attribute instead of the button element text as we might risk to click on the false positive "All (including removed from view)" element instead
@@ -256,7 +256,7 @@ Feature: The my overview block allows users to easily access their courses
   Scenario: View all (including removed from view) courses with hide persistent functionality
     Given the following config values are set as admin:
       | config                            | value | plugin           |
-      | displaygroupingallincludinghidden | 1     | block_myoverview |
+      | displaygroupingallincludinghidden | 1     | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     # We have to click on the data attribute instead of the button element text as we might risk to click on the false positive "All (including removed from view)" element instead
@@ -273,7 +273,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Show course category in cards display
     Given the following config values are set as admin:
-      | displaycategories | 1 | block_myoverview |
+      | displaycategories | 1 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "Card" "link" in the "Course overview" "block"
@@ -281,7 +281,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Show course category in list display
     Given the following config values are set as admin:
-      | displaycategories | 1 | block_myoverview |
+      | displaycategories | 1 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "List" "link" in the "Course overview" "block"
@@ -289,7 +289,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Show course category in summary display
     Given the following config values are set as admin:
-      | displaycategories | 1 | block_myoverview |
+      | displaycategories | 1 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "Summary" "link" in the "Course overview" "block"
@@ -297,7 +297,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Hide course category in cards display
     Given the following config values are set as admin:
-      | displaycategories | 0 | block_myoverview |
+      | displaycategories | 0 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "Card" "link" in the "Course overview" "block"
@@ -305,7 +305,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Hide course category in list display
     Given the following config values are set as admin:
-      | displaycategories | 0 | block_myoverview |
+      | displaycategories | 0 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "List" "link" in the "Course overview" "block"
@@ -313,7 +313,7 @@ Feature: The my overview block allows users to easily access their courses
 
   Scenario: Show course category in summary display
     Given the following config values are set as admin:
-      | displaycategories | 0 | block_myoverview |
+      | displaycategories | 0 | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "Display drop-down menu" "button" in the "Course overview" "block"
     When I click on "Summary" "link" in the "Course overview" "block"

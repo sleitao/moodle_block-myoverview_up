@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: The my overview block allows users to group courses by custom fields
 
   Background:
@@ -33,8 +33,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by checkbox: Yes
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1             | block_myoverview |
-      | customfiltergrouping       | checkboxfield | block_myoverview |
+      | displaygroupingcustomfield | 1             | block_myoverview_up |
+      | customfiltergrouping       | checkboxfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "Checkbox field: Yes" "link" in the "Course overview" "block"
@@ -46,8 +46,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by checkbox: No
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1             | block_myoverview |
-      | customfiltergrouping       | checkboxfield | block_myoverview |
+      | displaygroupingcustomfield | 1             | block_myoverview_up |
+      | customfiltergrouping       | checkboxfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "Checkbox field: No" "link" in the "Course overview" "block"
@@ -59,8 +59,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by date: 1 February 2001
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | datefield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | datefield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "1 February 2001" "link" in the "Course overview" "block"
@@ -72,8 +72,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by date: 6 August 1980
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | datefield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | datefield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "6 August 1980" "link" in the "Course overview" "block"
@@ -85,8 +85,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by date: No Date field
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | datefield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | datefield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "No Date field" "link" in the "Course overview" "block"
@@ -98,8 +98,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by select: Option 1
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1           | block_myoverview |
-      | customfiltergrouping       | selectfield | block_myoverview |
+      | displaygroupingcustomfield | 1           | block_myoverview_up |
+      | customfiltergrouping       | selectfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     And I should not see "Option 4" in the "Course overview" "block"
@@ -112,8 +112,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by select: Option 2
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1           | block_myoverview |
-      | customfiltergrouping       | selectfield | block_myoverview |
+      | displaygroupingcustomfield | 1           | block_myoverview_up |
+      | customfiltergrouping       | selectfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "Option 2" "link" in the "Course overview" "block"
@@ -125,8 +125,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by select: No Select field
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1           | block_myoverview |
-      | customfiltergrouping       | selectfield | block_myoverview |
+      | displaygroupingcustomfield | 1           | block_myoverview_up |
+      | customfiltergrouping       | selectfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "No Select field" "link" in the "Course overview" "block"
@@ -138,8 +138,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by text: fish
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | textfield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | textfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "fish" "link" in the "Course overview" "block"
@@ -151,8 +151,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by text: dog
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | textfield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | textfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "dog" "link" in the "Course overview" "block"
@@ -164,8 +164,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Group courses by text: No Text field
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1         | block_myoverview |
-      | customfiltergrouping       | textfield | block_myoverview |
+      | displaygroupingcustomfield | 1         | block_myoverview_up |
+      | customfiltergrouping       | textfield | block_myoverview_up |
     And I am on the "My courses" page logged in as "student1"
     And I click on "All" "button" in the "Course overview" "block"
     When I click on "No Text field" "link" in the "Course overview" "block"
@@ -183,8 +183,8 @@ Feature: The my overview block allows users to group courses by custom fields
 
   Scenario: Hidden fields not displayed in the filter
     Given the following config values are set as admin:
-      | displaygroupingcustomfield | 1          | block_myoverview |
-      | customfiltergrouping       | textfield2 | block_myoverview |
+      | displaygroupingcustomfield | 1          | block_myoverview_up |
+      | customfiltergrouping       | textfield2 | block_myoverview_up |
     And I log in as "admin"
     And I navigate to "Courses > Course custom fields" in site administration
     And I click on "Edit" "link" in the "Text field 2" "table_row"

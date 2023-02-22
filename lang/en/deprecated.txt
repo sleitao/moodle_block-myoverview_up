@@ -1,4 +1,4 @@
-clearsearch,block_myoverview
-aria:shortname,block_myoverview
-aria:lastaccessed,block_myoverview
-aria:title,block_myoverview
+clearsearch,block_myoverview_up
+aria:shortname,block_myoverview_up
+aria:lastaccessed,block_myoverview_up
+aria:title,block_myoverview_up

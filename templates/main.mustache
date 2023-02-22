@@ -15,46 +15,46 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_myoverview/main
+    @template block_myoverview_up/main
 
-    This template renders the main content area for the myoverview block.
+    This template renders the main content area for the myoverview_up block.
 
     Example context (json):
     {}
 }}
 
-<div id="block-myoverview-{{uniqid}}" class="block-myoverview block-cards" data-region="myoverview" role="navigation">
+<div id="block-myoverview_up-{{uniqid}}" class="block-myoverview_up block-cards" data-region="myoverview_up" role="navigation">
     <hr class="mt-0"/>
 
-    <div data-region="filter" class="d-flex align-items-center my-2" aria-label="{{#str}} aria:controls, block_myoverview {{/str}}">
+    <div data-region="filter" class="d-flex align-items-center my-2" aria-label="{{#str}} aria:controls, block_myoverview_up {{/str}}">
         <div class="row no-gutters">
-            {{> block_myoverview/nav-grouping-selector }}
+            {{> block_myoverview_up/nav-grouping-selector }}
 
-            {{> block_myoverview/nav-search-widget }}
+            {{> block_myoverview_up/nav-search-widget }}
 
-            {{> block_myoverview/nav-sort-selector }}
+            {{> block_myoverview_up/nav-sort-selector }}
 
             {{#displaydropdown}}
-                {{> block_myoverview/nav-display-selector }}
+                {{> block_myoverview_up/nav-display-selector }}
             {{/displaydropdown}}
         </div>
     </div>
 
     <div class="container-fluid p-0">
-        {{> block_myoverview/courses-view }}
+        {{> block_myoverview_up/courses-view }}
     </div>
 </div>
 {{#js}}
 require(
 [
     'jquery',
-    'block_myoverview/main',
+    'block_myoverview_up/main',
 ],
 function(
     $,
     Main
 ) {
-    var root = $('#block-myoverview-{{uniqid}}');
+    var root = $('#block-myoverview_up-{{uniqid}}');
     Main.init(root);
 });
 {{/js}}

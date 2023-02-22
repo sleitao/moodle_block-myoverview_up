@@ -15,13 +15,13 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_myoverview/courses-view
+    @template block_myoverview_up/courses-view
 
-    This template renders the courses view for the myoverview block.
+    This template renders the courses view for the myoverview_up block.
 
     Example context (json):
     {
-        "nocoursesimg": "https://moodlesite/theme/image.php/boost/block_myoverview/1535727318/courses",
+        "nocoursesimg": "https://moodlesite/theme/image.php/boost/block_myoverview_up/1535727318/courses",
         "newcourseurl": "https://moodlesite/course/edit.php",
         "grouping": "all",
         "sort": "fullname",
@@ -42,6 +42,6 @@
     data-displaycategories="{{displaycategories}}"
     data-newcourseurl="{{newcourseurl}}">
     <div data-region="course-view-content">
-        {{> block_myoverview/placeholders }}
+        {{> block_myoverview_up/placeholders }}
     </div>
 </div>

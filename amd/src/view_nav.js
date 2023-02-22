@@ -22,9 +22,9 @@
 
 import $ from 'jquery';
 import * as CustomEvents from 'core/custom_interaction_events';
-import * as Repository from 'block_myoverview/repository';
-import * as View from 'block_myoverview/view';
-import SELECTORS from 'block_myoverview/selectors';
+import * as Repository from 'block_myoverview_up/repository';
+import * as View from 'block_myoverview_up/view';
+import SELECTORS from 'block_myoverview_up/selectors';
 
 /**
  * Update the user preference for the block.
@@ -35,13 +35,13 @@ import SELECTORS from 'block_myoverview/selectors';
 const updatePreferences = (filter, value) => {
     let type = null;
     if (filter === 'display') {
-        type = 'block_myoverview_user_view_preference';
+        type = 'block_myoverview_up_user_view_preference';
     } else if (filter === 'sort') {
-        type = 'block_myoverview_user_sort_preference';
+        type = 'block_myoverview_up_user_sort_preference';
     } else if (filter === 'customfieldvalue') {
-        type = 'block_myoverview_user_grouping_customfieldvalue_preference';
+        type = 'block_myoverview_up_user_grouping_customfieldvalue_preference';
     } else {
-        type = 'block_myoverview_user_grouping_preference';
+        type = 'block_myoverview_up_user_grouping_preference';
     }
 
     Repository.updateUserPreferences({
@@ -130,7 +130,7 @@ const registerSelector = root => {
  * Initialise the timeline view navigation by adding event listeners to
  * the navigation elements.
  *
- * @param {object} root The root element for the myoverview block
+ * @param {object} root The root element for the myoverview_up block
  */
 export const init = root => {
     root = $(root);

@@ -1,4 +1,4 @@
-@block @block_myoverview @javascript
+@block @block_myoverview_up @javascript
 Feature: If there is no course yet, users with capabilities have a link to create new course
   In order to create a course quickly
   As a course creator

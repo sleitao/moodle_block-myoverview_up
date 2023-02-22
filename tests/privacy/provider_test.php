@@ -14,28 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
- * Unit tests for the block_myoverview implementation of the privacy API.
+ * Unit tests for the block_myoverview_up implementation of the privacy API.
  *
- * @package    block_myoverview
+ * @package    block_myoverview_up
  * @category   test
  * @copyright  2018 Peter Dias <peter@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace block_myoverview\privacy;
+namespace block_myoverview_up\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 use core_privacy\local\request\writer;
-use block_myoverview\privacy\provider;
+use block_myoverview_up\privacy\provider;
 /**
- * Unit tests for the block_myoverview implementation of the privacy API.
+ * Unit tests for the block_myoverview_up implementation of the privacy API.
  *
  * @copyright  2018 Peter Dias <peter@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider_test extends \core_privacy\tests\provider_testcase {
     /**
-     * Ensure that export_user_preferences returns no data if the user has not visited the myoverview block.
+     * Ensure that export_user_preferences returns no data if the user has not visited the myoverview_up block.
      */
     public function test_export_user_preferences_no_pref() {
         $this->resetAfterTest();
@@ -59,49 +59,49 @@ class provider_test extends \core_privacy\tests\provider_testcase {
         set_user_preference($type, $value, $user);
         provider::export_user_preferences($user->id);
         $writer = writer::with_context(\context_system::instance());
-        $blockpreferences = $writer->get_user_preferences('block_myoverview');
+        $blockpreferences = $writer->get_user_preferences('block_myoverview_up');
         if (!$expected) {
-            $expected = get_string($value, 'block_myoverview');
+            $expected = get_string($value, 'block_myoverview_up');
         }
         $this->assertEquals($expected, $blockpreferences->{$type}->value);
     }
 
     /**
-     * Create an array of valid user preferences for the myoverview block.
+     * Create an array of valid user preferences for the myoverview_up block.
      *
      * @return array Array of valid user preferences.
      */
     public function user_preference_provider() {
         return array(
-            array('block_myoverview_user_sort_preference', 'lastaccessed', ''),
-            array('block_myoverview_user_sort_preference', 'title', ''),
-            array('block_myoverview_user_sort_preference', 'shortname', ''),
-            array('block_myoverview_user_grouping_preference', 'allincludinghidden', ''),
-            array('block_myoverview_user_grouping_preference', 'all', ''),
-            array('block_myoverview_user_grouping_preference', 'inprogress', ''),
-            array('block_myoverview_user_grouping_preference', 'future', ''),
-            array('block_myoverview_user_grouping_preference', 'past', ''),
-            array('block_myoverview_user_grouping_preference', 'hidden', ''),
-            array('block_myoverview_user_grouping_preference', 'favourites', ''),
-            array('block_myoverview_user_view_preference', 'card', ''),
-            array('block_myoverview_user_view_preference', 'list', ''),
-            array('block_myoverview_user_view_preference', 'summary', ''),
-            array('block_myoverview_user_paging_preference', 12, 12)
+            array('block_myoverview_up_user_sort_preference', 'lastaccessed', ''),
+            array('block_myoverview_up_user_sort_preference', 'title', ''),
+            array('block_myoverview_up_user_sort_preference', 'shortname', ''),
+            array('block_myoverview_up_user_grouping_preference', 'allincludinghidden', ''),
+            array('block_myoverview_up_user_grouping_preference', 'all', ''),
+            array('block_myoverview_up_user_grouping_preference', 'inprogress', ''),
+            array('block_myoverview_up_user_grouping_preference', 'future', ''),
+            array('block_myoverview_up_user_grouping_preference', 'past', ''),
+            array('block_myoverview_up_user_grouping_preference', 'hidden', ''),
+            array('block_myoverview_up_user_grouping_preference', 'favourites', ''),
+            array('block_myoverview_up_user_view_preference', 'card', ''),
+            array('block_myoverview_up_user_view_preference', 'list', ''),
+            array('block_myoverview_up_user_view_preference', 'summary', ''),
+            array('block_myoverview_up_user_paging_preference', 12, 12)
         );
     }
 
     public function test_export_user_preferences_with_hidden_courses() {
         $this->resetAfterTest();
         $user = $this->getDataGenerator()->create_user();
-        $name = "block_myoverview_hidden_course_1";
+        $name = "block_myoverview_up_hidden_course_1";
 
         set_user_preference($name, 1, $user);
         provider::export_user_preferences($user->id);
         $writer = writer::with_context(\context_system::instance());
-        $blockpreferences = $writer->get_user_preferences('block_myoverview');
+        $blockpreferences = $writer->get_user_preferences('block_myoverview_up');
 
         $this->assertEquals(
-            get_string("privacy:request:preference:set", 'block_myoverview', (object) [
+            get_string("privacy:request:preference:set", 'block_myoverview_up', (object) [
                 'name' => $name,
                 'value' => 1,
             ]),
