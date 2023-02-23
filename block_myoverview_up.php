@@ -59,44 +59,49 @@ class block_myoverview_up extends block_base {
         $this->content = new stdClass();
         $this->content->footer = '';
 
-        $courses = enrol_get_all_users_courses($USER->id);  
-        $this->content->text = '<div class="courses-container">';
+        $courses = enrol_get_all_users_courses($USER->id);
+
 
         $renderable = new \block_myoverview_up\output\main($group, $sort, $view, $paging, $customfieldvalue);
         $renderer = $this->page->get_renderer('block_myoverview_up');
 
-        
+
         $this->content->text = $renderer->render($renderable);
-        
+
         $hidden_courses= array();
-        
+
     foreach ($courses as $course) {
         $context = context_course::instance($course->id);
-        
+
         // Check if the user does not have update capability for the course
         if (!has_capability('moodle/course:update', $context)) {
-            
+
             // Check if the course is hidden but the user (student) is enrolled
             if ($course->visible == 0 && is_enrolled($context, $USER, '', true)) {
                 // Add the course to the hidden courses array
                 $hidden_courses[] = $course;
             }
-        }  
-    }
-    
-    // Display the hiddden courses if any were found
-    if (!empty($hidden_courses)) {
-        $subtitle = get_string('hidden_courses' , 'block_myoverview_up');
-        $this->content->text .= "<strong>$subtitle:</strong><br>";
-        
-        // Loop through the hidden courses and display them
-        foreach ($hidden_courses as $course) {
-            $context = context_course::instance($course->id);
-            $this->content->text .= html_writer::tag('a', $course->fullname, array('href' => $CFG->wwwroot . '/course/view.php?id=' . $course->id, 'class' => 'grayout')) . '<br>';
         }
     }
 
+    // Display the hiddden courses if any were found
+    if (!empty($hidden_courses)) {
+        global $OUTPUT;
 
+        $this->content->text .= html_writer::start_tag('div', array('class' => 'hidden-courses'));
+        // Define ícone de ajuda e imprime no título.
+        $help = $OUTPUT->help_icon('hiddencoursesup', 'block_myoverview_up');
+        $heading = get_string('hidden_courses' , 'block_myoverview_up');
+        $this->content->text .=  "<h6>$heading $help</h6>";
+        $this->content->text .= html_writer::start_tag('ul', array('class' => 'list-unstyled'));
+        // Loop through the hidden courses and display them
+        foreach ($hidden_courses as $course) {
+            $context = context_course::instance($course->id);
+            $this->content->text .= html_writer::tag('li', $course->fullname, array( 'class' => 'grayout hidden-course'));
+        }
+        $this->content->text .= html_writer::end_tag('ul');
+        $this->content->text .= html_writer::end_tag('div');
+        }
     }
 
     /**
