@@ -97,7 +97,9 @@ class block_myoverview_up extends block_base {
         // Loop through the hidden courses and display them
         foreach ($hidden_courses as $course) {
             $context = context_course::instance($course->id);
-            $this->content->text .= html_writer::tag('li', $course->fullname, array( 'class' => 'grayout hidden-course'));
+            $this->content->text .= html_writer::tag('li', $course->fullname .
+            // Adiciona também shortname da UC para maior clareza.
+            html_writer::tag('span', $course->shortname, array('class' => 'badge badge-light text-muted')), array( 'class' => 'grayout hidden-course'));
         }
         $this->content->text .= html_writer::end_tag('ul');
         $this->content->text .= html_writer::end_tag('div');
