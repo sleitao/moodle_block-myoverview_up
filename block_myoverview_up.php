@@ -56,11 +56,12 @@ class block_myoverview_up extends block_base {
         $paging = get_user_preferences('block_myoverview_up_user_paging_preference');
         $customfieldvalue = get_user_preferences('block_myoverview_up_user_grouping_customfieldvalue_preference');
 
-        $this->content->footer = '';
+
         $this->content = new stdClass();
+        $this->content->footer = '';
 
         $courses = enrol_get_all_users_courses($USER->id);  
-        $this->content->text = '<div class="courses-container">';
+
 
         $renderable = new \block_myoverview_up\output\main($group, $sort, $view, $paging, $customfieldvalue);
         $renderer = $this->page->get_renderer('block_myoverview_up');
