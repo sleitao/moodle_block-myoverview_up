@@ -86,7 +86,9 @@ $string['sortbytitle'] = 'Sort by course name';
 $string['sortbylastaccessed'] = 'Sort by last accessed';
 $string['sortbyshortname'] = 'Sort by short name';
 $string['privacy:request:preference:set'] = 'The value of the setting \'{$a->name}\' was \'{$a->value}\'';
-$string['hidden_courses'] = 'Hidden Courses';
+$string['hidden_courses'] = 'Unavailable courses:';
+$string['hiddencoursesup'] = 'Unavailable courses';
+$string['hiddencoursesup_help'] = 'Here you can see the courses in which you are enrolled, but at this stage are still unavailable for students. This status depends on the teachers.';
 
 // Deprecated since Moodle 4.0.
 $string['clearsearch'] = "Clear search";

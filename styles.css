@@ -4,10 +4,17 @@
     display: none;
 }
 
-.block_myoverview_up .grayout{
+.block_myoverview_up .hidden-courses .grayout{
     color: #808080;
-    pointer-events: none;
     text-decoration: line-through;
     margin-bottom: 10px;
-    
+}
+
+.block_myoverview_up .hidden-courses li
+{
+  display: block;
+        background-image: url([[pix:core|i/course]]);
+        background-repeat: no-repeat;
+        padding-left: 21px;
+        background-position: left 0.2em;
 }
