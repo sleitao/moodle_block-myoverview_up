@@ -61,7 +61,7 @@ class provider_test extends \core_privacy\tests\provider_testcase {
         $writer = writer::with_context(\context_system::instance());
         $blockpreferences = $writer->get_user_preferences('block_myoverview_up');
         if (!$expected) {
-            $expected = get_string($value, 'block_myoverview_up');
+            $expected = get_string($value, 'block_myoverview');
         }
         $this->assertEquals($expected, $blockpreferences->{$type}->value);
     }
@@ -101,7 +101,7 @@ class provider_test extends \core_privacy\tests\provider_testcase {
         $blockpreferences = $writer->get_user_preferences('block_myoverview_up');
 
         $this->assertEquals(
-            get_string("privacy:request:preference:set", 'block_myoverview_up', (object) [
+            get_string("privacy:request:preference:set", 'block_myoverview', (object) [
                 'name' => $name,
                 'value' => 1,
             ]),

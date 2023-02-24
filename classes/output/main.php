@@ -332,9 +332,9 @@ class main implements renderable, templatable {
         $layout = new stdClass();
 
         $layout->id = $layoutname;
-        $layout->name = get_string($layoutname, 'block_myoverview_up');
+        $layout->name = get_string($layoutname, 'block_myoverview');
         $layout->active = $this->view == $layoutname ? true : false;
-        $layout->arialabel = get_string('aria:' . $layoutname, 'block_myoverview_up');
+        $layout->arialabel = get_string('aria:' . $layoutname, 'block_myoverview');
 
         return $layout;
     }

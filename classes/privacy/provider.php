@@ -62,24 +62,24 @@ class provider implements \core_privacy\local\metadata\provider, user_preference
         $preference = get_user_preferences('block_myoverview_up_user_sort_preference', null, $userid);
         if (isset($preference)) {
             writer::export_user_preference('block_myoverview_up',
-                'block_myoverview_up_user_sort_preference', get_string($preference, 'block_myoverview_up'),
-                get_string('privacy:metadata:overviewsortpreference', 'block_myoverview_up'));
+                'block_myoverview_up_user_sort_preference', get_string($preference, 'block_myoverview'),
+                get_string('privacy:metadata:overviewsortpreference', 'block_myoverview'));
         }
 
         $preference = get_user_preferences('block_myoverview_up_user_view_preference', null, $userid);
         if (isset($preference)) {
             writer::export_user_preference('block_myoverview_up',
                 'block_myoverview_up_user_view_preference',
-                get_string($preference, 'block_myoverview_up'),
-                get_string('privacy:metadata:overviewviewpreference', 'block_myoverview_up'));
+                get_string($preference, 'block_myoverview'),
+                get_string('privacy:metadata:overviewviewpreference', 'block_myoverview'));
         }
 
         $preference = get_user_preferences('block_myoverview_up_user_grouping_preference', null, $userid);
         if (isset($preference)) {
             writer::export_user_preference('block_myoverview_up',
                 'block_myoverview_up_user_grouping_preference',
-                get_string($preference, 'block_myoverview_up'),
-                get_string('privacy:metadata:overviewgroupingpreference', 'block_myoverview_up'));
+                get_string($preference, 'block_myoverview'),
+                get_string('privacy:metadata:overviewgroupingpreference', 'block_myoverview'));
         }
 
         $preferences = get_user_preferences(null, null, $userid);
@@ -89,7 +89,7 @@ class provider implements \core_privacy\local\metadata\provider, user_preference
                     'block_myoverview_up',
                     $name,
                     $value,
-                    get_string('privacy:request:preference:set', 'block_myoverview_up', (object) [
+                    get_string('privacy:request:preference:set', 'block_myoverview', (object) [
                         'name' => $name,
                         'value' => $value,
                     ])
@@ -102,7 +102,7 @@ class provider implements \core_privacy\local\metadata\provider, user_preference
             \core_privacy\local\request\writer::export_user_preference('block_myoverview_up',
                 'block_myoverview_up_user_paging_preference',
                 $preference,
-                get_string('privacy:metadata:overviewpagingpreference', 'block_myoverview_up'));
+                get_string('privacy:metadata:overviewpagingpreference', 'block_myoverview'));
         }
     }
 }

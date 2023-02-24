@@ -35,60 +35,60 @@ if ($ADMIN->fulltree) {
     // Display Course Categories on Dashboard course items (cards, lists, summary items).
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaycategories',
-            get_string('displaycategories', 'block_myoverview_up'),
-            get_string('displaycategories_help', 'block_myoverview_up'),
+            get_string('displaycategories', 'block_myoverview'),
+            get_string('displaycategories_help', 'block_myoverview'),
             1));
 
     // Enable / Disable available layouts.
-    $choices = array(BLOCK_MYOVERVIEW_UP_VIEW_CARD => get_string('card', 'block_myoverview_up'),
-            BLOCK_MYOVERVIEW_UP_VIEW_LIST => get_string('list', 'block_myoverview_up'),
-            BLOCK_MYOVERVIEW_UP_VIEW_SUMMARY => get_string('summary', 'block_myoverview_up'));
+    $choices = array(BLOCK_MYOVERVIEW_UP_VIEW_CARD => get_string('card', 'block_myoverview'),
+            BLOCK_MYOVERVIEW_UP_VIEW_LIST => get_string('list', 'block_myoverview'),
+            BLOCK_MYOVERVIEW_UP_VIEW_SUMMARY => get_string('summary', 'block_myoverview'));
     $settings->add(new admin_setting_configmulticheckbox(
             'block_myoverview_up/layouts',
-            get_string('layouts', 'block_myoverview_up'),
-            get_string('layouts_help', 'block_myoverview_up'),
+            get_string('layouts', 'block_myoverview'),
+            get_string('layouts_help', 'block_myoverview'),
             $choices,
             $choices));
     unset ($choices);
 
     // Enable / Disable course filter items.
     $settings->add(new admin_setting_heading('block_myoverview_up/availablegroupings',
-            get_string('availablegroupings', 'block_myoverview_up'),
-            get_string('availablegroupings_desc', 'block_myoverview_up')));
+            get_string('availablegroupings', 'block_myoverview'),
+            get_string('availablegroupings_desc', 'block_myoverview')));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingallincludinghidden',
-            get_string('allincludinghidden', 'block_myoverview_up'),
+            get_string('allincludinghidden', 'block_myoverview'),
             '',
             0));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingall',
-            get_string('all', 'block_myoverview_up'),
+            get_string('all', 'block_myoverview'),
             '',
             1));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupinginprogress',
-            get_string('inprogress', 'block_myoverview_up'),
+            get_string('inprogress', 'block_myoverview'),
             '',
             1));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingpast',
-            get_string('past', 'block_myoverview_up'),
+            get_string('past', 'block_myoverview'),
             '',
             1));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingfuture',
-            get_string('future', 'block_myoverview_up'),
+            get_string('future', 'block_myoverview'),
             '',
             1));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingcustomfield',
-            get_string('customfield', 'block_myoverview_up'),
+            get_string('customfield', 'block_myoverview'),
             '',
             0));
 
@@ -97,27 +97,27 @@ if ($ADMIN->fulltree) {
         $choices  = ['' => get_string('choosedots')] + $choices;
         $settings->add(new admin_setting_configselect(
                 'block_myoverview_up/customfiltergrouping',
-                get_string('customfiltergrouping', 'block_myoverview_up'),
+                get_string('customfiltergrouping', 'block_myoverview'),
                 '',
                 '',
                 $choices));
     } else {
         $settings->add(new admin_setting_configempty(
                 'block_myoverview_up/customfiltergrouping',
-                get_string('customfiltergrouping', 'block_myoverview_up'),
-                get_string('customfiltergrouping_nofields', 'block_myoverview_up')));
+                get_string('customfiltergrouping', 'block_myoverview'),
+                get_string('customfiltergrouping_nofields', 'block_myoverview')));
     }
     $settings->hide_if('block_myoverview_up/customfiltergrouping', 'block_myoverview_up/displaygroupingcustomfield');
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupingfavourites',
-            get_string('favourites', 'block_myoverview_up'),
+            get_string('favourites', 'block_myoverview'),
             '',
             1));
 
     $settings->add(new admin_setting_configcheckbox(
             'block_myoverview_up/displaygroupinghidden',
-            get_string('hiddencourses', 'block_myoverview_up'),
+            get_string('hiddencourses', 'block_myoverview'),
             '',
             1));
 }

@@ -22,7 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Course overview UP';
-$string['hidden_courses'] = 'Unavailable courses:';
-$string['hiddencoursesup'] = 'Unavailable courses';
-$string['hiddencoursesup_help'] = 'Courses in which you are enrolled, but at this stage are still unavailable for students. This course status depends on the teachers.';
+$string['pluginname'] = 'Visão global UP';
+$string['hidden_courses'] = 'UCs indisponíveis:';
+$string['hiddencoursesup'] = 'UCs indisponíveis:';
+$string['hiddencoursesup_help'] = 'Enquanto estudante encontra-se inscrito a estas UCs. No entanto, neste momento, elas estão indisponíveis para todos os estudantes. Esta definição depende dos docentes responsáveis.';
