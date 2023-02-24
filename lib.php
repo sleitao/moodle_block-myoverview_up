@@ -39,7 +39,9 @@ define('BLOCK_MYOVERVIEW_UP_GROUPING_CUSTOMFIELD', 'customfield');
 /**
  * Allows selection of all courses without a value for the custom field.
  */
-define('BLOCK_MYOVERVIEW_UP_CUSTOMFIELD_EMPTY', -1);
+if (!defined('BLOCK_MYOVERVIEW_CUSTOMFIELD_EMPTY')) {
+    define('BLOCK_MYOVERVIEW_CUSTOMFIELD_EMPTY', -1);
+}
 
 /**
  * Constants for the user preferences sorting options
