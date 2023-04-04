@@ -26,3 +26,4 @@ $string['pluginname'] = 'Visão global UP';
 $string['hidden_courses'] = 'UCs indisponíveis:';
 $string['hiddencoursesup'] = 'UCs indisponíveis:';
 $string['hiddencoursesup_help'] = 'Enquanto estudante encontra-se inscrito a estas UCs. No entanto, neste momento, elas estão indisponíveis para todos os estudantes. Esta definição depende dos docentes responsáveis.';
+$string['myoverview_up:myaddinstance'] = 'Adicionar novo bloco \'Minhas disciplinas\' no Painel do utilizador';

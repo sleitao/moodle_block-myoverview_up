@@ -26,3 +26,4 @@ $string['pluginname'] = 'Course overview UP';
 $string['hidden_courses'] = 'Unavailable courses:';
 $string['hiddencoursesup'] = 'Unavailable courses';
 $string['hiddencoursesup_help'] = 'Courses in which you are enrolled, but at this stage are still unavailable for students. This course status depends on the teachers.';
+$string['myoverview_up:myaddinstance'] = 'Add a new Course overview UP block';
